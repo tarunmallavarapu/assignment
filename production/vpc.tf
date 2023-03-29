@@ -55,6 +55,7 @@ resource "aws_subnet" "app" {
   )
 }
 
+
 resource "aws_subnet" "data" {
   vpc_id            = aws_vpc.vpc.id
   count             = length(var.vpc_data_subnets)

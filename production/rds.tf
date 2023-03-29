@@ -12,6 +12,7 @@ resource "aws_db_instance" "prod_rds" {
   skip_final_snapshot  = true
   storage_encrypted    = true
   vpc_security_group_ids = ["${aws_security_group.prod_rds_sg.id}"]
+  backup_retention_period = 1
 
   depends_on = [
       resource.aws_db_subnet_group.data
@@ -45,7 +46,6 @@ resource "aws_security_group" "prod_rds_sg" {
 
 resource "aws_db_instance" "postgresql-read-replica" {
   allocated_storage    = 10
-  db_subnet_group_name = data.aws_db_subnet_group.data_group.name
   replicate_source_db = aws_db_instance.prod_rds.id
   instance_class       = "db.t3.micro"
   multi_az             = false
@@ -53,6 +53,7 @@ resource "aws_db_instance" "postgresql-read-replica" {
   skip_final_snapshot  = true
   storage_encrypted    = true
   vpc_security_group_ids = ["${aws_security_group.prod_rds_sg.id}"]
+  backup_retention_period = 0
 
   depends_on = [
       resource.aws_db_subnet_group.data

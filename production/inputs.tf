@@ -43,5 +43,13 @@ variable "db_password" {
 }
 
 variable "prod_ami" {
-  
+  default = "ami-083e69acfa4b35b6f"
+}
+
+variable "bastion_ami" {
+  default = "ami-00dab80918a1fa50d"
+}
+
+variable "app_count" {
+  default = "2"
 }
