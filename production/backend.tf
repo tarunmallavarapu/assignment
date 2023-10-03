@@ -5,6 +5,6 @@ terraform{
         profile     = "test"
         key         =  "test2/terraform.tfstate"
         encrypt     = "true"
-        region      = "ap-northeast-2"
+        region      = "ap-northeast-1"
     }
 }
